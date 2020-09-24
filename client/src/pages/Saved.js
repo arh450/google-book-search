@@ -1,5 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
+import Header from "../components/Header/Header.js";
 
-export default function Saved() {
-  return <div>Saved</div>;
+export default class Saved extends Component {
+  render() {
+    return (
+      <>
+        <Header />
+      </>
+    );
+  }
 }

@@ -1,5 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
+import Header from "../components/Header/Header.js";
 
-export default function Search() {
-  return <div>Search page</div>;
+export default class Search extends Component {
+  render() {
+    return (
+      <>
+        <Header />
+      </>
+    );
+  }
 }
