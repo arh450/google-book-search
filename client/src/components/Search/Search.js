@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import Results from "../Results/Results.js";
 import Modal from "../Modal/Modal";
 import { Jumbotron, Row, Col, Form, Button } from "react-bootstrap";
+import Axios from "axios";
 
 export default class index extends Component {
   state = {
     searchInput: "",
     showModal: false,
     modalText: "",
+    bookData: [],
   };
 
   onChange = (event) => {
@@ -19,11 +22,27 @@ export default class index extends Component {
 
   handleSearch = (event) => {
     event.preventDefault();
+    const searchInput = this.state.searchInput;
 
     if (!this.state.searchInput) {
       this.setState({ showModal: true, modalText: "Please enter an input" });
     } else {
-      console.log(this.state.searchInput);
+      Axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchInput}`)
+        .then((response) => {
+          console.log(response);
+          if (response.data.totalItems === 0) {
+            this.setState({
+              showModal: true,
+              modalText: "No results, please try a different search",
+            });
+          } else {
+            this.setState({ bookData: response.data.items });
+            console.log(this.state.bookData);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       this.setState({ searchInput: "" });
     }
   };
@@ -60,6 +79,7 @@ export default class index extends Component {
             </Jumbotron>
           </Col>
         </Row>
+        <Results state={this.state} />
         <Modal state={this.state} handleClose={this.handleClose} />
       </>
     );
