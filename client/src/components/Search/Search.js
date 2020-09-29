@@ -73,7 +73,7 @@ export default class index extends Component {
   render() {
     return (
       <>
-        <Row className="mx-auto mt-3">
+        <Row className="mx-auto mt-2">
           <Col md={10} className="mt-3 mx-auto text-white">
             <Jumbotron className="bg-danger">
               <Row className="mx-auto">
