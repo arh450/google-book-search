@@ -11,7 +11,6 @@ export default class index extends Component {
     Axios.get("/api/books")
       .then((response) => {
         this.setState({ savedBooks: response.data });
-        console.log(this.state.savedBooks);
       })
       .catch((err) => {
         console.log(err);

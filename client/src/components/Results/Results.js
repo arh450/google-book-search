@@ -15,7 +15,7 @@ export default class Result extends Component {
     const { postNewBook } = this.props;
 
     const popover = (
-      <Popover id="popover-basic">
+      <Popover>
         <Popover.Title>Book Saved!</Popover.Title>
       </Popover>
     );
