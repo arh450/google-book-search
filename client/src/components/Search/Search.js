@@ -59,7 +59,7 @@ export default class index extends Component {
       title: book.title,
       authors: book.authors[0],
       description: book.description,
-      image: book.imageLinks.smallThumbnail,
+      image: book.imageLinks.thumbnail,
       link: book.infoLink,
     };
 

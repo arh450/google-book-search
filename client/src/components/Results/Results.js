@@ -33,13 +33,13 @@ export default class Result extends Component {
             ) : (
               <Jumbotron style={{ backgroundColor: "#283850" }}>
                 {bookData.map((data, index) => (
-                  <Card className="mb-1" key={index}>
+                  <Card className="mb-1 p-2" key={index}>
                     <Row>
                       <Col md={2}>
                         <img
                           alt="bookImage"
                           className="img-fluid"
-                          src={data.volumeInfo.imageLinks.smallThumbnail}
+                          src={data.volumeInfo.imageLinks.thumbnail}
                         />
                       </Col>
                       <Col md={10}>
@@ -47,10 +47,12 @@ export default class Result extends Component {
                           <Card.Title>
                             <strong>{data.volumeInfo.title}</strong>
                           </Card.Title>
-                          <Card.Text>
+                          <Card.Text style={{ fontSize: "18px" }}>
                             Written by: {data.volumeInfo.authors[0]}
                           </Card.Text>
-                          <Card.Text>{data.volumeInfo.description}</Card.Text>
+                          <Card.Text style={{ fontSize: "19px" }}>
+                            {data.volumeInfo.description}
+                          </Card.Text>
                           <Button
                             style={{
                               backgroundColor: "#082038",

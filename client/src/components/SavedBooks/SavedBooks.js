@@ -54,7 +54,7 @@ export default class index extends Component {
             ) : (
               <Jumbotron style={{ backgroundColor: "#283850" }}>
                 {savedBooks.map((data, index) => (
-                  <Card className="mb-1" key={index}>
+                  <Card className="mb-1 p-2" key={index}>
                     <Row>
                       <Col md={2}>
                         <img
@@ -68,8 +68,12 @@ export default class index extends Component {
                           <Card.Title>
                             <strong>{data.title}</strong>
                           </Card.Title>
-                          <Card.Text>Written by: {data.authors[0]}</Card.Text>
-                          <Card.Text>{data.description}</Card.Text>
+                          <Card.Text style={{ fontSize: "18px" }}>
+                            Written by: {data.authors[0]}
+                          </Card.Text>
+                          <Card.Text style={{ fontSize: "19px" }}>
+                            {data.description}
+                          </Card.Text>
                           <Button
                             style={{
                               backgroundColor: "#082038",
