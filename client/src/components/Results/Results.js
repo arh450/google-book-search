@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card, Row, Col, Button, Jumbotron } from "react-bootstrap";
-import Axios from "axios";
+
 import "./style.css";
 
 export default class Result extends Component {
@@ -25,9 +25,7 @@ export default class Result extends Component {
                     </Col>
                     <Col md={10}>
                       <Card.Body>
-                        <Card.Title name={data.volumeInfo.title}>
-                          {data.volumeInfo.title}
-                        </Card.Title>
+                        <Card.Title>{data.volumeInfo.title}</Card.Title>
                         <Card.Text>
                           Written by: {data.volumeInfo.authors[0]}
                         </Card.Text>
