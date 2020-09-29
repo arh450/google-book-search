@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Card, Row, Col, Button, Jumbotron } from "react-bootstrap";
+import {
+  Card,
+  Row,
+  Col,
+  Button,
+  Jumbotron,
+  Popover,
+  OverlayTrigger,
+} from "react-bootstrap";
 
 import "./style.css";
 
@@ -7,6 +15,12 @@ export default class Result extends Component {
   render() {
     const { bookData } = this.props.state;
     const { postNewBook } = this.props;
+
+    const popover = (
+      <Popover id="popover-basic">
+        <Popover.Title>Book Saved!</Popover.Title>
+      </Popover>
+    );
 
     return (
       <>
@@ -44,13 +58,20 @@ export default class Result extends Component {
                           >
                             View
                           </Button>
-                          <Button
-                            variant="success"
-                            id={data.id}
-                            onClick={postNewBook}
+                          <OverlayTrigger
+                            trigger="click"
+                            rootClose
+                            placement="top"
+                            overlay={popover}
                           >
-                            Save
-                          </Button>
+                            <Button
+                              variant="success"
+                              id={data.id}
+                              onClick={postNewBook}
+                            >
+                              Save
+                            </Button>
+                          </OverlayTrigger>
                         </Card.Body>
                       </Col>
                     </Row>

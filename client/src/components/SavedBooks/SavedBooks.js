@@ -42,6 +42,7 @@ export default class index extends Component {
 
   render() {
     const { savedBooks } = this.state;
+
     return (
       <>
         <Row className="mx-auto mt-2">
@@ -76,6 +77,7 @@ export default class index extends Component {
                           >
                             View
                           </Button>
+
                           <Button
                             variant="danger"
                             id={data._id}
