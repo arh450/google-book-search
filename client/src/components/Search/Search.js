@@ -10,6 +10,7 @@ export default class index extends Component {
     showModal: false,
     modalText: "",
     bookData: [],
+    title: "",
   };
 
   onChange = (event) => {
@@ -29,7 +30,6 @@ export default class index extends Component {
     } else {
       Axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchInput}`)
         .then((response) => {
-          console.log(response);
           if (response.data.totalItems === 0) {
             this.setState({
               showModal: true,
@@ -37,7 +37,6 @@ export default class index extends Component {
             });
           } else {
             this.setState({ bookData: response.data.items });
-            console.log(this.state.bookData);
           }
         })
         .catch((err) => {
@@ -45,6 +44,30 @@ export default class index extends Component {
         });
       this.setState({ searchInput: "" });
     }
+  };
+
+  postNewBook = (event) => {
+    event.preventDefault();
+
+    let book = this.state.bookData.filter(
+      (data) => data.id === event.target.id
+    );
+
+    book = book[0].volumeInfo;
+
+    const bookObject = {
+      title: book.title,
+      authors: book.authors[0],
+      description: book.description,
+      image: book.imageLinks.smallThumbnail,
+      link: book.infoLink,
+    };
+
+    Axios.post("/api/savebook", bookObject)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
   };
 
   render() {
@@ -79,7 +102,7 @@ export default class index extends Component {
             </Jumbotron>
           </Col>
         </Row>
-        <Results state={this.state} />
+        <Results state={this.state} postNewBook={this.postNewBook} />
         <Modal state={this.state} handleClose={this.handleClose} />
       </>
     );

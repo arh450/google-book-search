@@ -21,10 +21,13 @@ app.use(bodyParser.json());
 // =============================================
 app.use("/api", routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log(`Database connected successfully`))
+  .catch((err) => console.log(err));
 
 // Everything that is not an api request is sent to index.html
 // for client side routing.
