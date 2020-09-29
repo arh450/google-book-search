@@ -7,13 +7,7 @@ export default class index extends Component {
   render() {
     return (
       <>
-        <Navbar
-          collapseOnSelect
-          expand="lg"
-          bg="dark"
-          variant="dark"
-          id="mainNav"
-        >
+        <Navbar collapseOnSelect expand="lg" variant="dark" id="mainNav">
           <Navbar.Brand href="/">Google Books</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

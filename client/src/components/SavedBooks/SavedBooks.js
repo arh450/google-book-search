@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Card, Row, Col, Button, Jumbotron } from "react-bootstrap";
 import Axios from "axios";
 
-import "./style.css";
-
 export default class index extends Component {
   state = {
     savedBooks: [],
@@ -48,13 +46,13 @@ export default class index extends Component {
         <Row className="mx-auto mt-2">
           <Col md={10} className="mt-3 mx-auto">
             {!savedBooks.length ? (
-              <Jumbotron className="bg-warning">
+              <Jumbotron style={{ backgroundColor: "#283850" }}>
                 <h1 className="text-center text-white">
                   No Saved Books to Display
                 </h1>
               </Jumbotron>
             ) : (
-              <Jumbotron className="bg-warning">
+              <Jumbotron style={{ backgroundColor: "#283850" }}>
                 {savedBooks.map((data, index) => (
                   <Card className="mb-1" key={index}>
                     <Row>
@@ -67,11 +65,16 @@ export default class index extends Component {
                       </Col>
                       <Col md={10}>
                         <Card.Body>
-                          <Card.Title>{data.Title}</Card.Title>
+                          <Card.Title>
+                            <strong>{data.title}</strong>
+                          </Card.Title>
                           <Card.Text>Written by: {data.authors[0]}</Card.Text>
                           <Card.Text>{data.description}</Card.Text>
                           <Button
-                            variant="primary"
+                            style={{
+                              backgroundColor: "#082038",
+                              border: "none",
+                            }}
                             href={data.link}
                             target="_blank"
                           >
@@ -79,7 +82,11 @@ export default class index extends Component {
                           </Button>
 
                           <Button
+                            className="ml-1"
                             variant="danger"
+                            style={{
+                              border: "none",
+                            }}
                             id={data._id}
                             onClick={this.deleteBook}
                           >

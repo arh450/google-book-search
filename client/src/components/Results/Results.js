@@ -9,8 +9,6 @@ import {
   OverlayTrigger,
 } from "react-bootstrap";
 
-import "./style.css";
-
 export default class Result extends Component {
   render() {
     const { bookData } = this.props.state;
@@ -27,13 +25,13 @@ export default class Result extends Component {
         <Row className="mx-auto ">
           <Col md={10} className="mt-3 mx-auto">
             {!bookData.length ? (
-              <Jumbotron className="bg-warning">
+              <Jumbotron style={{ backgroundColor: "#283850" }}>
                 <h1 className="text-center text-white">
                   No Results to Display
                 </h1>
               </Jumbotron>
             ) : (
-              <Jumbotron className="bg-warning">
+              <Jumbotron style={{ backgroundColor: "#283850" }}>
                 {bookData.map((data, index) => (
                   <Card className="mb-1" key={index}>
                     <Row>
@@ -46,13 +44,18 @@ export default class Result extends Component {
                       </Col>
                       <Col md={10}>
                         <Card.Body>
-                          <Card.Title>{data.volumeInfo.title}</Card.Title>
+                          <Card.Title>
+                            <strong>{data.volumeInfo.title}</strong>
+                          </Card.Title>
                           <Card.Text>
                             Written by: {data.volumeInfo.authors[0]}
                           </Card.Text>
                           <Card.Text>{data.volumeInfo.description}</Card.Text>
                           <Button
-                            variant="primary"
+                            style={{
+                              backgroundColor: "#082038",
+                              border: "none",
+                            }}
                             href={data.volumeInfo.infoLink}
                             target="_blank"
                           >
@@ -65,7 +68,11 @@ export default class Result extends Component {
                             overlay={popover}
                           >
                             <Button
+                              className="ml-1"
                               variant="success"
+                              style={{
+                                border: "none",
+                              }}
                               id={data.id}
                               onClick={postNewBook}
                             >

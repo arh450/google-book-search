@@ -26,14 +26,14 @@ export default class index extends Component {
     const searchInput = this.state.searchInput;
 
     if (!this.state.searchInput) {
-      this.setState({ showModal: true, modalText: "Please enter an input" });
+      this.setState({ showModal: true, modalText: "Please enter an input!" });
     } else {
       Axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchInput}`)
         .then((response) => {
           if (response.data.totalItems === 0) {
             this.setState({
               showModal: true,
-              modalText: "No results, please try a different search",
+              modalText: "No results, please try a different search!",
             });
           } else {
             this.setState({ bookData: response.data.items });
@@ -75,7 +75,7 @@ export default class index extends Component {
       <>
         <Row className="mx-auto mt-2">
           <Col md={10} className="mt-3 mx-auto text-white">
-            <Jumbotron className="bg-danger">
+            <Jumbotron style={{ backgroundColor: "#485870" }}>
               <Row className="mx-auto">
                 <Col md={12}>
                   <h2 className="mb-2"> Books Search</h2>
@@ -90,7 +90,7 @@ export default class index extends Component {
                       />
                     </Form.Group>
                     <Button
-                      variant="warning"
+                      style={{ backgroundColor: "#808890", border: "none" }}
                       className="float-right"
                       onClick={this.handleSearch}
                     >

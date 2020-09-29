@@ -4,8 +4,6 @@ import Navbar from "./components/Navbar/Navbar.js";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 
-import "./App.css";
-
 export default function App() {
   return (
     <div className="App">
