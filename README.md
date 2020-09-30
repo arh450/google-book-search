@@ -10,6 +10,10 @@ https://powerful-everglades-55525.herokuapp.com/
 
 This is a MERN stack application used to display and save books using the Google Books API based on a user's search. A user can enter a book of interest by entering a title in the search bar and be returned a list of books containing, a title, image, author, brief description, and link to the full book information on Google books. A user can then select the `Save` button to save the book, which can then be displayed to the user again by navigating to the "Saved" page. There the user will have access to all books saved by the user and also remove a saved book by selecting the `Remove` button.
 
+## Preview
+
+![gif1](https://media.giphy.com/media/AhJc8bmLaFB0c6p5Oz/giphy.gif)
+
 ## Technologies Used
 
 - [React.js](https://reactjs.org/) - This application is written and built using React.js.
